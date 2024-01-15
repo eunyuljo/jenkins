@@ -8,8 +8,8 @@ node {
      }
 
      stage('Push image') {
-         sh 'rm -f ~/.dockercfg || true'
-         sh 'rm -f ~/.docker/config.json || true'
+         sh 'rm -rf ~/.dockercfg || true'
+         sh 'rm -rf ~/.docker/config.json || true'
          
          docker.withRegistry('https://797364105022.dkr.ecr.ap-northeast-2.amazonaws.com', 'ecr:ap-northeast-2:dockerbuild') {
              app.push("${env.BUILD_NUMBER}")
